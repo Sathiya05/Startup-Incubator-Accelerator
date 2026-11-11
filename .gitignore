@@ -1,0 +1,10 @@
+# Dependencies (build/QA tooling only — not part of the static site)
+node_modules/
+
+# Vercel
+.vercel/
+
+# Logs & OS
+*.log
+.DS_Store
+Thumbs.db
