@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply — Join the LaunchForge Accelerator Program</title>
+  <meta name="description" content="Apply to LaunchForge Accelerator: check eligibility, follow the 5-step application process and submit the startup application form to be considered for our next sample cohort." />
+  <link rel="icon" href="images/logo/favicon.svg" type="image/svg+xml" />
+  <script src="js/main.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main id="main-content">
+    <!-- ============================== HERO ============================== -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-softindigo via-page to-page">
+      <div class="lf-blob -top-32 -start-24 h-96 w-96 bg-primary/25"></div>
+      <div class="lf-blob -bottom-40 -end-24 h-[26rem] w-[26rem] bg-secondary/20"></div>
+
+      <div class="container-x relative py-16 md:py-24 lg:py-28">
+        <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <!-- Copy -->
+          <div class="animate-fade-up">
+            <span class="eyebrow">
+              <span class="h-2 w-2 animate-pulse-dot rounded-full bg-secondary"></span>
+              Applications Open · Sample Cohort
+            </span>
+            <h1 class="mt-6 font-display text-4xl font-bold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+              Your Startup Could Be
+              <span class="text-gradient">Our Next Big Story.</span>
+            </h1>
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+              Applying takes about 15 minutes. Share your team, your product and the problem you
+              are solving — our review team reads every submission, shortlists promising founders
+              for a discussion, and onboards selected startups into the program. Five simple
+              steps, one application form, zero paperwork.
+            </p>
+
+            <ol class="mt-8 flex flex-wrap gap-3" aria-label="Application steps at a glance">
+              <li class="badge bg-surface text-muted ring-1 ring-line">
+                <span class="text-primary">1</span> Submit application
+              </li>
+              <li class="badge bg-surface text-muted ring-1 ring-line">
+                <span class="text-primary">2</span> Initial review
+              </li>
+              <li class="badge bg-surface text-muted ring-1 ring-line">
+                <span class="text-primary">3</span> Founder discussion
+              </li>
+              <li class="badge bg-surface text-muted ring-1 ring-line">
+                <span class="text-primary">4</span> Decision &amp; onboarding
+              </li>
+            </ol>
+
+            <div class="mt-9 flex flex-wrap gap-4">
+              <a href="#application-form" class="btn btn-primary btn-lg">
+                Start Your Application
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lf-flip" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="program.html" class="btn btn-outline btn-lg">Explore Our Programs</a>
+            </div>
+          </div>
+
+          <!-- Visual -->
+          <div class="relative animate-fade-up" style="animation-delay: 0.12s">
+            <div class="relative overflow-hidden rounded-[2rem] border border-line bg-surface shadow-lift">
+              <img
+                src="images/hero/hero-apply.jpg"
+                alt="Startup founder presenting an application deck to a small review panel"
+                width="1600"
+                height="1067"
+                class="aspect-[4/3] w-full object-cover"
+                fetchpriority="high"
+              />
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/75 to-transparent p-6 pt-14">
+                <p class="font-display text-sm font-semibold text-white">Next sample cohort · Applications open</p>
+              </div>
+            </div>
+
+            <!-- Floating response-time card -->
+            <div class="absolute -bottom-7 -start-4 hidden w-56 rounded-2xl border border-line bg-surface p-4 shadow-card sm:block lg:-start-10">
+              <div class="flex items-center gap-3">
+                <span class="grid h-11 w-11 place-items-center rounded-xl bg-softindigo text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </span>
+                <div>
+                  <p class="font-display text-sm font-bold leading-tight text-ink">~15 min application</p>
+                  <p class="mt-1 text-[11px] font-semibold uppercase tracking-wider text-muted">Editable detail</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating review card -->
+            <div class="absolute -top-6 -end-3 hidden w-52 rounded-2xl border border-line bg-surface p-4 shadow-card sm:block lg:-end-6">
+              <div class="flex items-center gap-3">
+                <span class="grid h-11 w-11 place-items-center rounded-xl bg-softorange text-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                </span>
+                <div>
+                  <p class="font-display text-sm font-bold leading-tight text-ink">Every form read</p>
+                  <p class="mt-1 text-[11px] font-semibold uppercase tracking-wider text-muted">Sample promise</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== WHO CAN APPLY =========================== -->
+    <section id="section-eligibility" class="section bg-surface">
+      <div class="container-x">
+        <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <span class="eyebrow">Who Can Apply?</span>
+            <h2 class="section-title mt-5">Founders we are excited to meet</h2>
+            <p class="section-lead">
+              We back builders with momentum and hunger. If you recognise yourself below, this
+              form was written for you — sample eligibility criteria, editable until the
+              selection committee confirms the final list.
+            </p>
+          </div>
+          <span class="badge w-fit bg-softorange text-secondary ring-1 ring-secondary/30">Editable info</span>
+        </div>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="card card-hover p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-softindigo text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/></svg>
+            </span>
+            <h3 class="mt-5 font-display text-lg font-bold text-ink">Early-stage founders</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              First-time or repeat founders at idea, pre-seed, seed or growth stage who are ready
+              to move quickly and test assumptions.
+            </p>
+          </article>
+
+          <article class="card card-hover p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-softorange text-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <h3 class="mt-5 font-display text-lg font-bold text-ink">Startup teams</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              Committed teams of one or more builders who can dedicate focused time each week to
+              the program track.
+            </p>
+          </article>
+
+          <article class="card card-hover p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-softindigo text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
+            </span>
+            <h3 class="mt-5 font-display text-lg font-bold text-ink">Innovative product ideas</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              Products built on a clear insight, early validation or a prototype — something new
+              that customers would pay for.
+            </p>
+          </article>
+
+          <article class="card card-hover p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-softorange text-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </span>
+            <h3 class="mt-5 font-display text-lg font-bold text-ink">Technology-driven businesses</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              Software, AI, healthtech, fintech, edtech, climate tech and other tech-enabled
+              models with scalable economics.
+            </p>
+          </article>
+
+          <article class="card card-hover p-7">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-softindigo text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <h3 class="mt-5 font-display text-lg font-bold text-ink">Founders looking for mentorship</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">
+              Builders who want structured feedback, honest accountability and a network that
+              pushes the venture forward.
+            </p>
+          </article>
+
+          <article class="card card-hover flex flex-col justify-between bg-softindigo/70 p-7">
+            <div>
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-surface text-primary ring-1 ring-line">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-3 7h5l-3 7"/><path d="M4 18h6"/><path d="M14 6h6"/><path d="M4 6h4"/><path d="M14 18h6"/></svg>
+              </span>
+              <h3 class="mt-5 font-display text-lg font-bold text-ink">Not sure you qualify?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted">
+                Apply anyway — or read the program tracks first. Our sample criteria are editable,
+                and we would rather read a bold idea than miss it.
+              </p>
+            </div>
+            <a href="program.html" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+              Compare program tracks
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lf-flip" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+        </div>
+
+        <p class="mt-8 text-center text-xs font-medium text-muted">
+          Sample eligibility criteria for demonstration — editable information, not a published company policy.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================= APPLICATION PROCESS ========================= -->
+    <section id="section-process" class="section bg-page">
+      <div class="container-x">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="eyebrow">Application Process</span>
+          <h2 class="section-title mt-5">Five steps from form to onboarding</h2>
+          <p class="section-lead mx-auto">
+            A transparent, founder-friendly review flow. Indicative timings are sample details
+            and stay editable until each cohort is confirmed.
+          </p>
+        </div>
+
+        <ol class="mt-14 grid gap-6 md:grid-cols-5">
+          <li class="card card-hover relative p-6">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-primary font-display text-base font-bold text-white">1</span>
+            <span class="mt-4 grid h-10 w-10 place-items-center rounded-lg bg-softindigo text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6M9 15h6"/></svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold text-ink">Submit Application</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">Fill the form below with your team, product and traction details.</p>
+            <p class="mt-3 text-[11px] font-bold uppercase tracking-wider text-secondary">Step 01 · sample</p>
+          </li>
+
+          <li class="card card-hover relative p-6">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-primary font-display text-base font-bold text-white">2</span>
+            <span class="mt-4 grid h-10 w-10 place-items-center rounded-lg bg-softindigo text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold text-ink">Initial Review</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">Our review team scores every submission against the selection criteria.</p>
+            <p class="mt-3 text-[11px] font-bold uppercase tracking-wider text-secondary">Step 02 · sample</p>
+          </li>
+
+          <li class="card card-hover relative p-6">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-primary font-display text-base font-bold text-white">3</span>
+            <span class="mt-4 grid h-10 w-10 place-items-center rounded-lg bg-softorange text-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold text-ink">Founder Discussion</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">Shortlisted founders join a 45-minute conversation with an operator mentor.</p>
+            <p class="mt-3 text-[11px] font-bold uppercase tracking-wider text-secondary">Step 03 · sample</p>
+          </li>
+
+          <li class="card card-hover relative p-6">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-primary font-display text-base font-bold text-white">4</span>
+            <span class="mt-4 grid h-10 w-10 place-items-center rounded-lg bg-softorange text-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="m8.6 12.9-1.1 8.1 4.5-2.6 4.5 2.6-1.1-8.1"/></svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold text-ink">Selection Decision</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">The committee confirms the cohort and shares clear feedback either way.</p>
+            <p class="mt-3 text-[11px] font-bold uppercase tracking-wider text-secondary">Step 04 · sample</p>
+          </li>
+
+          <li class="card card-hover relative p-6">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-primary font-display text-base font-bold text-white">5</span>
+            <span class="mt-4 grid h-10 w-10 place-items-center rounded-lg bg-softindigo text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold text-ink">Program Onboarding</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">Accepted teams meet their mentors and kick off the track with a clear roadmap.</p>
+            <p class="mt-3 text-[11px] font-bold uppercase tracking-wider text-secondary">Step 05 · sample</p>
+          </li>
+        </ol>
+
+        <p class="mt-8 text-center text-xs font-medium text-muted">
+          Illustrative process for demonstration — stages and timings are editable sample details.
+        </p>
+      </div>
+    </section>
+
+    <!-- ======================= STARTUP APPLICATION FORM ======================= -->
+    <section id="application-form" class="section bg-surface">
+      <div class="container-x">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="eyebrow">Startup Application Form</span>
+          <h2 class="section-title mt-5">Tell us what you&rsquo;re building</h2>
+          <p class="section-lead mx-auto">
+            Fields marked with an asterisk are required. Your answers stay in this browser — this
+            is a frontend demonstration and nothing is sent to a server.
+          </p>
+        </div>
+
+        <div class="mx-auto mt-12 max-w-5xl">
+          <!-- ============================ THE FORM ============================ -->
+          <form id="startup-application-form" class="card p-6 sm:p-8 lg:p-10" novalidate aria-describedby="application-demo-note">
+            <div class="mb-8 flex flex-col gap-4 border-b border-line pb-6 sm:flex-row sm:items-center sm:justify-between">
+              <div class="flex items-start gap-3">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-softindigo text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg>
+                </span>
+                <div>
+                  <h3 class="font-display text-lg font-bold text-ink">Application Details</h3>
+                  <p class="mt-1 text-sm text-muted">Average completion time: ~15 minutes (sample detail).</p>
+                </div>
+              </div>
+              <span class="badge w-fit bg-softorange text-secondary ring-1 ring-secondary/30">Demo form · local only</span>
+            </div>
+
+            <div class="grid gap-x-6 md:grid-cols-6">
+              <!-- founderName -->
+              <div class="field md:col-span-2">
+                <label class="label" for="founderName">Founder Name <span class="text-danger" aria-hidden="true">*</span></label>
+                <input class="input" type="text" id="founderName" name="founderName" autocomplete="name" placeholder="Alex Carter" required aria-describedby="founderName-hint" />
+                <p class="field-hint" id="founderName-hint">The primary contact for this application.</p>
+                <p class="field-error hidden" data-error-for="founderName" role="alert"></p>
+              </div>
+
+              <!-- email -->
+              <div class="field md:col-span-2">
+                <label class="label" for="email">Email Address <span class="text-danger" aria-hidden="true">*</span></label>
+                <input class="input" type="email" id="email" name="email" dir="ltr" autocomplete="email" placeholder="you@startup.com" required aria-describedby="email-hint" />
+                <p class="field-hint" id="email-hint">We use this to schedule founder discussions.</p>
+                <p class="field-error hidden" data-error-for="email" role="alert"></p>
+              </div>
+
+              <!-- phone -->
+              <div class="field md:col-span-2">
+                <label class="label" for="phone">Phone Number <span class="text-danger" aria-hidden="true">*</span></label>
+                <input class="input" type="tel" id="phone" name="phone" dir="ltr" autocomplete="tel" placeholder="+1 555 123 4567" required aria-describedby="phone-hint" />
+                <p class="field-hint" id="phone-hint">Include your country code (7&ndash;15 digits).</p>
+                <p class="field-error hidden" data-error-for="phone" role="alert"></p>
+              </div>
+
+              <!-- startupName -->
+              <div class="field md:col-span-3">
+                <label class="label" for="startupName">Startup Name <span class="text-danger" aria-hidden="true">*</span></label>
+                <input class="input" type="text" id="startupName" name="startupName" placeholder="NovaMind AI" required aria-describedby="startupName-hint" />
+                <p class="field-hint" id="startupName-hint">Registered name or working title — editable later.</p>
+                <p class="field-error hidden" data-error-for="startupName" role="alert"></p>
+              </div>
+
+              <!-- website -->
+              <div class="field md:col-span-3">
+                <label class="label" for="website">Website <span class="text-muted font-normal">(optional)</span></label>
+                <input class="input" type="url" id="website" name="website" dir="ltr" inputmode="url" placeholder="https://yourstartup.com" aria-describedby="website-hint" />
+                <p class="field-hint" id="website-hint">Full URL including https:// — landing page is fine.</p>
+                <p class="field-error hidden" data-error-for="website" role="alert"></p>
+              </div>
+
+              <!-- industry -->
+              <div class="field md:col-span-2">
+                <label class="label" for="industry">Industry <span class="text-danger" aria-hidden="true">*</span></label>
+                <select class="input" id="industry" name="industry" required aria-describedby="industry-hint">
+                  <option value="" selected disabled>Select an industry</option>
+                  <option>Technology</option>
+                  <option>Healthcare</option>
+                  <option>FinTech</option>
+                  <option>Education</option>
+                  <option>Sustainability</option>
+                  <option>Consumer Products</option>
+                  <option>Other</option>
+                </select>
+                <p class="field-hint" id="industry-hint">Pick the closest match — the committee can reclassify.</p>
+                <p class="field-error hidden" data-error-for="industry" role="alert"></p>
+              </div>
+
+              <!-- stage -->
+              <div class="field md:col-span-2">
+                <label class="label" for="stage">Startup Stage <span class="text-danger" aria-hidden="true">*</span></label>
+                <select class="input" id="stage" name="stage" required aria-describedby="stage-hint">
+                  <option value="" selected disabled>Select a stage</option>
+                  <option>Idea</option>
+                  <option>Pre-Seed</option>
+                  <option>Seed</option>
+                  <option>Growth</option>
+                </select>
+                <p class="field-hint" id="stage-hint">Honest answers help us match the right track.</p>
+                <p class="field-error hidden" data-error-for="stage" role="alert"></p>
+              </div>
+
+              <!-- teamSize -->
+              <div class="field md:col-span-2">
+                <label class="label" for="teamSize">Team Size <span class="text-danger" aria-hidden="true">*</span></label>
+                <input class="input" type="number" id="teamSize" name="teamSize" min="1" max="999" step="1" inputmode="numeric" placeholder="4" required aria-describedby="teamSize-hint" />
+                <p class="field-hint" id="teamSize-hint">Number of people working on the venture (1&ndash;999).</p>
+                <p class="field-error hidden" data-error-for="teamSize" role="alert"></p>
+              </div>
+
+              <!-- description -->
+              <div class="field md:col-span-6">
+                <label class="label" for="description">Startup Description <span class="text-danger" aria-hidden="true">*</span></label>
+                <textarea class="input" id="description" name="description" rows="5" minlength="40" maxlength="600" placeholder="What does your startup build, for whom, and why now?" required aria-describedby="description-hint"></textarea>
+                <p class="field-hint flex items-start justify-between gap-4" id="description-hint">
+                  <span>A 40&ndash;600 character overview of your product and business.</span>
+                  <span class="shrink-0 font-semibold" dir="ltr" data-count-for="description" data-count-min="40"><span data-count-value>0 / 600</span></span>
+                </p>
+                <p class="field-error hidden" data-error-for="description" role="alert"></p>
+              </div>
+
+              <!-- problem -->
+              <div class="field md:col-span-3">
+                <label class="label" for="problem">Problem You Solve <span class="text-danger" aria-hidden="true">*</span></label>
+                <textarea class="input" id="problem" name="problem" rows="4" maxlength="500" placeholder="What painful problem do your customers face today?" required aria-describedby="problem-hint"></textarea>
+                <p class="field-hint flex items-start justify-between gap-4" id="problem-hint">
+                  <span>Be specific about the pain.</span>
+                  <span class="shrink-0 font-semibold" dir="ltr" data-count-for="problem"><span data-count-value>0 / 500</span></span>
+                </p>
+                <p class="field-error hidden" data-error-for="problem" role="alert"></p>
+              </div>
+
+              <!-- solution -->
+              <div class="field md:col-span-3">
+                <label class="label" for="solution">Your Solution <span class="text-danger" aria-hidden="true">*</span></label>
+                <textarea class="input" id="solution" name="solution" rows="4" maxlength="500" placeholder="How does your product solve that problem better than anything else?" required aria-describedby="solution-hint"></textarea>
+                <p class="field-hint flex items-start justify-between gap-4" id="solution-hint">
+                  <span>Your approach and differentiator.</span>
+                  <span class="shrink-0 font-semibold" dir="ltr" data-count-for="solution"><span data-count-value>0 / 500</span></span>
+                </p>
+                <p class="field-error hidden" data-error-for="solution" role="alert"></p>
+              </div>
+
+              <!-- targetAudience -->
+              <div class="field md:col-span-3">
+                <label class="label" for="targetAudience">Target Audience <span class="text-danger" aria-hidden="true">*</span></label>
+                <input class="input" type="text" id="targetAudience" name="targetAudience" maxlength="200" placeholder="Operations teams at mid-size logistics companies" required aria-describedby="targetAudience-hint" />
+                <p class="field-hint flex items-start justify-between gap-4" id="targetAudience-hint">
+                  <span>Who buys or uses the product.</span>
+                  <span class="shrink-0 font-semibold" dir="ltr" data-count-for="targetAudience"><span data-count-value>0 / 200</span></span>
+                </p>
+                <p class="field-error hidden" data-error-for="targetAudience" role="alert"></p>
+              </div>
+
+              <!-- fundingStatus (paired with the short target-audience field) -->
+              <div class="field md:col-span-3">
+                <label class="label" for="fundingStatus">Funding Status <span class="text-danger" aria-hidden="true">*</span></label>
+                <select class="input" id="fundingStatus" name="fundingStatus" required aria-describedby="fundingStatus-hint">
+                  <option value="" selected disabled>Select funding status</option>
+                  <option>Bootstrapped</option>
+                  <option>Friends &amp; Family</option>
+                  <option>Angel</option>
+                  <option>Seed Round</option>
+                  <option>Seeking Investment</option>
+                  <option>Other</option>
+                </select>
+                <p class="field-hint" id="fundingStatus-hint">This helps mentors prepare the right support.</p>
+                <p class="field-error hidden" data-error-for="fundingStatus" role="alert"></p>
+              </div>
+
+              <!-- currentProgress -->
+              <div class="field md:col-span-3">
+                <label class="label" for="currentProgress">Current Progress <span class="text-danger" aria-hidden="true">*</span></label>
+                <textarea class="input" id="currentProgress" name="currentProgress" rows="4" maxlength="400" placeholder="MVP live, 30 pilot users, first paying customer…" required aria-describedby="currentProgress-hint"></textarea>
+                <p class="field-hint flex items-start justify-between gap-4" id="currentProgress-hint">
+                  <span>Traction, prototype or revenue so far.</span>
+                  <span class="shrink-0 font-semibold" dir="ltr" data-count-for="currentProgress"><span data-count-value>0 / 400</span></span>
+                </p>
+                <p class="field-error hidden" data-error-for="currentProgress" role="alert"></p>
+              </div>
+
+              <!-- whyLaunchForge -->
+              <div class="field md:col-span-3">
+                <label class="label" for="whyLaunchForge">Why LaunchForge? <span class="text-danger" aria-hidden="true">*</span></label>
+                <textarea class="input" id="whyLaunchForge" name="whyLaunchForge" rows="4" maxlength="500" placeholder="What do you want from the program, and what will you bring?" required aria-describedby="whyLaunchForge-hint"></textarea>
+                <p class="field-hint flex items-start justify-between gap-4" id="whyLaunchForge-hint">
+                  <span>Goals you want mentorship for.</span>
+                  <span class="shrink-0 font-semibold" dir="ltr" data-count-for="whyLaunchForge"><span data-count-value>0 / 500</span></span>
+                </p>
+                <p class="field-error hidden" data-error-for="whyLaunchForge" role="alert"></p>
+              </div>
+            </div>
+
+            <div class="mt-4 border-t border-line pt-7">
+              <p id="application-demo-note" class="mb-5 rounded-xl border border-secondary/30 bg-softorange/70 px-4 py-3 text-xs font-medium leading-relaxed text-ink">
+                Frontend demonstration — your submission is saved only in this browser&rsquo;s
+                localStorage and is never transmitted to LaunchForge or any third party.
+              </p>
+
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <p class="text-xs leading-relaxed text-muted">
+                  By submitting you agree that this is a demo flow with no real review process.
+                </p>
+                <button type="submit" id="application-submit" class="btn btn-primary btn-lg shrink-0">
+                  <span data-submit-label>Submit Application</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lf-flip" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- ======================= CONFIRMATION PANEL ======================= -->
+          <div id="application-confirmation" class="card hidden p-6 text-center sm:p-10" role="status" aria-live="polite" tabindex="-1">
+            <span class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-success/15 text-success">
+              <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <h3 class="mt-6 font-display text-2xl font-bold text-ink sm:text-3xl">Application received (demo)</h3>
+            <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
+              Nice work — your application has been recorded locally. Here is a summary of what
+              was captured, along with your reference ID.
+            </p>
+
+            <dl class="mx-auto mt-8 grid max-w-2xl gap-x-6 gap-y-4 text-start sm:grid-cols-2" id="application-summary"></dl>
+
+            <div class="mx-auto mt-8 max-w-2xl rounded-xl border border-line bg-softindigo/70 px-4 py-4 text-start">
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-muted">Reference ID</span>
+                <code class="rounded-md bg-surface px-2.5 py-1 text-xs font-bold text-primary ring-1 ring-line" id="application-reference">&mdash;</code>
+              </div>
+              <div class="mt-3 flex flex-wrap items-center justify-between gap-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-muted">Status</span>
+                <span class="badge bg-warning/15 text-warning">Pending</span>
+              </div>
+            </div>
+
+            <p class="mx-auto mt-6 max-w-2xl text-xs leading-relaxed text-muted">
+              This is a frontend demonstration — nothing was sent to a server. Your submission is
+              stored only in this browser&rsquo;s localStorage.
+            </p>
+
+            <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <button type="button" id="application-reset" class="btn btn-outline">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+                Submit another application
+              </button>
+              <a href="dashboard/admin-dashboard.html" class="btn btn-primary">
+                View demo dashboard
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lf-flip" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== APPLICATION FAQ =========================== -->
+    <section id="section-application-faq" class="section bg-page">
+      <div class="container-x">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="eyebrow">Application FAQ</span>
+          <h2 class="section-title mt-5">Questions founders ask before applying</h2>
+          <p class="section-lead mx-auto">
+            Sample answers written for this demonstration — editable whenever the review policy
+            is finalised.
+          </p>
+        </div>
+
+        <div class="mx-auto mt-12 flex max-w-3xl flex-col gap-4">
+          <div class="card p-2" data-accordion>
+            <button type="button" class="flex w-full items-center justify-between gap-4 rounded-xl px-5 py-4 text-start text-base font-semibold text-ink transition hover:text-primary" data-accordion-trigger aria-expanded="false" aria-controls="apply-faq-1">
+              Who is eligible to apply?
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lf-chevron shrink-0 text-muted" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div id="apply-faq-1" data-accordion-panel><div><p class="px-5 pb-4 text-sm leading-relaxed text-muted">
+              Early-stage founders and startup teams with an innovative product idea — ideally
+              technology-driven — at idea, pre-seed, seed or growth stage. You do not need revenue
+              or funding yet; we care about a sharp problem, a credible team and the willingness
+              to work with mentors. (Sample criteria — editable info.)
+            </p></div></div>
+          </div>
+
+          <div class="card p-2" data-accordion>
+            <button type="button" class="flex w-full items-center justify-between gap-4 rounded-xl px-5 py-4 text-start text-base font-semibold text-ink transition hover:text-primary" data-accordion-trigger aria-expanded="false" aria-controls="apply-faq-2">
+              How is my application reviewed?
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lf-chevron shrink-0 text-muted" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div id="apply-faq-2" data-accordion-panel><div><p class="px-5 pb-4 text-sm leading-relaxed text-muted">
+              Every submission goes through an initial review against our sample scorecard
+              (problem severity, solution clarity, team and traction). Shortlisted founders are
+              invited to a founder discussion, after which the selection committee confirms the
+              cohort. In this demo, submissions are stored only in your browser.
+            </p></div></div>
+          </div>
+
+          <div class="card p-2" data-accordion>
+            <button type="button" class="flex w-full items-center justify-between gap-4 rounded-xl px-5 py-4 text-start text-base font-semibold text-ink transition hover:text-primary" data-accordion-trigger aria-expanded="false" aria-controls="apply-faq-3">
+              How long does the program last?
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lf-chevron shrink-0 text-muted" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div id="apply-faq-3" data-accordion-panel><div><p class="px-5 pb-4 text-sm leading-relaxed text-muted">
+              Track lengths vary by stage — the sample tracks run from 4 weeks at idea stage to
+              12 weeks for seed growth, with mentor sessions continuing afterwards. Check the
+              program page for the current, editable schedule.
+            </p></div></div>
+          </div>
+
+          <div class="card p-2" data-accordion>
+            <button type="button" class="flex w-full items-center justify-between gap-4 rounded-xl px-5 py-4 text-start text-base font-semibold text-ink transition hover:text-primary" data-accordion-trigger aria-expanded="false" aria-controls="apply-faq-4">
+              How many startups are selected?
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lf-chevron shrink-0 text-muted" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div id="apply-faq-4" data-accordion-panel><div><p class="px-5 pb-4 text-sm leading-relaxed text-muted">
+              Sample cohorts are intentionally small so each team gets real mentor attention —
+              roughly 8&ndash;12 startups per track. Final numbers are editable until each
+              cohort is confirmed, and every shortlisted founder receives feedback either way.
+            </p></div></div>
+          </div>
+
+          <div class="card p-2" data-accordion>
+            <button type="button" class="flex w-full items-center justify-between gap-4 rounded-xl px-5 py-4 text-start text-base font-semibold text-ink transition hover:text-primary" data-accordion-trigger aria-expanded="false" aria-controls="apply-faq-5">
+              What if I am not selected — can I reapply?
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lf-chevron shrink-0 text-muted" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div id="apply-faq-5" data-accordion-panel><div><p class="px-5 pb-4 text-sm leading-relaxed text-muted">
+              Absolutely. A no today is a not-yet — you can submit a fresh application for the
+              next cohort once you have new traction, a clearer product or a stronger team.
+              Mention what changed, and the second application gets a full review.
+            </p></div></div>
+          </div>
+        </div>
+
+        <p class="mt-8 text-center text-xs font-medium text-muted">
+          Sample FAQ content for demonstration — editable info.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================ FINAL CTA ============================ -->
+    <section id="section-cta" class="section">
+      <div class="container-x">
+        <div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-primary via-indigo-700 to-primary px-6 py-16 text-center shadow-lift sm:px-12 md:py-20">
+          <div class="lf-blob -top-24 -start-16 h-72 w-72 bg-secondary/40"></div>
+          <div class="lf-blob -bottom-28 -end-16 h-80 w-80 bg-white/15"></div>
+
+          <div class="relative mx-auto max-w-3xl">
+            <h2 class="font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+              Take the First Step Toward Your Next Milestone.
+            </h2>
+            <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+              One form stands between your idea and a cohort of mentors, peers and momentum.
+              Fill it in, hit submit, and see what happens next.
+            </p>
+            <div class="mt-9 flex flex-wrap justify-center gap-4">
+              <a href="#application-form" class="btn btn-white btn-lg">
+                Apply Now
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+              </a>
+              <a href="program.html" class="btn btn-lg border border-white/40 text-white transition hover:bg-white/10">Explore Program Tracks</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="js/navbar.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/apply.js"></script>
+</body>
+</html>

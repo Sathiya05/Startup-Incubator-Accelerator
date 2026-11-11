@@ -1,0 +1,16 @@
+{
+  "name": "launchforge-accelerator",
+  "version": "1.0.0",
+  "description": "LaunchForge Accelerator - a premium, fully responsive startup incubator & accelerator website built with HTML5, Tailwind CSS and vanilla JavaScript.",
+  "private": true,
+  "scripts": {
+    "build:css": "node ./node_modules/tailwindcss/lib/cli.js -i ./css/input.css -o ./css/style.css --minify",
+    "dev:css": "node ./node_modules/tailwindcss/lib/cli.js -i ./css/input.css -o ./css/style.css --watch",
+    "build": "npm run build:css"
+  },
+  "devDependencies": {
+    "playwright": "^1.65.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^3.4.17"
+  }
+}

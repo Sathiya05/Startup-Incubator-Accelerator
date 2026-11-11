@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — LaunchForge Accelerator</title>
+  <meta name="description" content="The LaunchForge Admin Console: manage applications, founders, startups, programs, mentors, sessions, milestones, pitch decks and platform settings." />
+  <link rel="icon" href="../images/logo/favicon.svg" type="image/svg+xml" />
+  <script src="../js/main.js"></script>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* ======================================================================
+       Admin console shell chrome (dashboard-specific, theme-aware).
+       Only positioning/collapsing lives here — all colours, type and
+       components come from css/style.css tokens.
+       ====================================================================== */
+    #dash-sidebar {
+      position: fixed;
+      inset-block: 0;
+      inset-inline-start: 0;
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      width: min(17.5rem, 85vw);
+      background: rgb(var(--c-surface));
+      border-inline-end: 1px solid rgb(var(--c-line));
+      transform: translateX(-100%);
+      visibility: hidden;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s, width 0.25s ease;
+    }
+    [dir='rtl'] #dash-sidebar {
+      transform: translateX(100%);
+    }
+    #dash-sidebar.is-open {
+      transform: none;
+      visibility: visible;
+    }
+
+    @media (min-width: 1100px) {
+      #dash-sidebar {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        height: 100vh;
+        max-height: 100vh;
+        width: 17.5rem;
+        max-width: none;
+        transform: none;
+        visibility: visible;
+      }
+      body.lf-side-mini #dash-sidebar {
+        width: 4.75rem;
+      }
+      body.lf-side-mini .side-label,
+      body.lf-side-mini .side-brand {
+        display: none;
+      }
+      body.lf-side-mini .side-head {
+        justify-content: center;
+        padding-inline: 0.5rem;
+      }
+      body.lf-side-mini .side-link {
+        justify-content: center;
+        gap: 0;
+        padding-inline: 0.75rem;
+      }
+      body.lf-side-mini .dash-controls {
+        padding-inline: 0.5rem;
+      }
+      body.lf-side-mini .dash-controls > .flex {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      body.lf-side-mini .dash-controls #user-menu {
+        inset-inline-start: calc(100% + 0.5rem);
+        inset-inline-end: auto;
+        top: auto;
+        bottom: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    /* File inputs (native but tidy) */
+    input[type='file'].lf-file {
+      font-size: 0.8125rem;
+      color: rgb(var(--c-muted));
+    }
+    input[type='file'].lf-file::file-selector-button {
+      margin-inline-end: 0.75rem;
+      border: 1px solid rgb(var(--c-line));
+      border-radius: 0.625rem;
+      background: rgb(var(--c-surface));
+      padding: 0.5rem 0.875rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgb(var(--c-ink));
+      cursor: pointer;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    input[type='file'].lf-file::file-selector-button:hover {
+      border-color: rgb(var(--c-primary) / 0.5);
+      color: rgb(var(--c-primary));
+    }
+
+    /* Compact selects inside tables */
+    select.lf-inline-select {
+      border-radius: 0.5rem;
+      border: 1px solid rgb(var(--c-line));
+      background: rgb(var(--c-surface));
+      padding: 0.3rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgb(var(--c-ink));
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="bg-page">
+  <a href="#dash-content" class="skip-link">Skip to main content</a>
+
+  <!-- ======================= APPLICATION SHELL ======================= -->
+  <div id="dash-shell" class="flex min-h-screen">
+
+    <!-- ------------------------------ SIDEBAR ---------------------------- -->
+    <aside id="dash-sidebar" aria-label="Admin console navigation">
+      <div class="side-head flex items-center justify-between gap-2 border-b border-line px-4 py-4">
+        <a href="../index.html" class="side-brand flex min-w-0 items-center gap-3" aria-label="LaunchForge Accelerator — home">
+          <img src="../images/logo/launchforge-mark.svg" alt="" width="40" height="40" class="h-10 w-10 shrink-0" />
+          <span class="side-label min-w-0 leading-tight">
+            <span class="block truncate font-display text-lg font-bold tracking-tight text-ink">LaunchForge</span>
+            <span class="block truncate text-[10px] font-bold uppercase tracking-[0.18em] text-muted">Startup Accelerator</span>
+          </span>
+        </a>
+        <button type="button" id="dash-collapse" class="icon-btn hidden h-9 w-9 lg:grid" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="dash-sidebar" title="Collapse sidebar"></button>
+        <button type="button" id="dash-side-close" class="icon-btn h-9 w-9 lg:hidden" aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <nav class="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-4" aria-label="Dashboard sections">
+        <ul class="flex flex-col gap-1.5">
+          <li>
+            <a href="#/overview" data-route="#/overview" title="Overview" class="side-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+              <span class="side-label">Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/applications" data-route="#/applications" title="Applications" class="side-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
+              <span class="side-label">Applications</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/founders" data-route="#/founders" title="Founders" class="side-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span class="side-label">Founders</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/startups" data-route="#/startups" title="Startups" class="side-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+              <span class="side-label">Startups</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/programs" data-route="#/programs" title="Programs" class="side-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+              <span class="side-label">Programs</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/mentors" data-route="#/mentors" title="Mentors" class="side-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>
+              <span class="side-label">Mentors</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/sessions" data-route="#/sessions" title="Mentor Sessions" class="side-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <span class="side-label">Mentor Sessions</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/milestones" data-route="#/milestones" title="Milestones" class="side-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg>
+              <span class="side-label">Milestones</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/pitch-decks" data-route="#/pitch-decks" title="Pitch Decks" class="side-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg>
+              <span class="side-label">Pitch Decks</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/notifications" data-route="#/notifications" title="Notifications" class="side-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+              <span class="side-label">Notifications</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/settings" data-route="#/settings" title="Settings" class="side-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+              <span class="side-label">Settings</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="my-4 border-t border-line"></div>
+
+        <button type="button" id="dash-logout" class="side-link w-full text-danger hover:bg-danger/10 hover:text-danger" title="Log out">
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+          <span class="side-label">Log out</span>
+        </button>
+
+        <p class="side-label mt-4 px-3.5 text-[11px] leading-relaxed text-muted">
+          Demo console — everything you change is stored locally in this browser only.
+        </p>
+      </nav>
+
+      <!-- Topbar controls moved into the hamburger drawer -->
+      <div class="dash-controls border-t border-line px-3 py-3">
+        <div class="flex items-center gap-2">
+          <a href="#/notifications" id="dash-bell" class="icon-btn relative" aria-label="Notifications">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+            <span id="dash-bell-count" class="absolute -top-1.5 -end-1.5 hidden min-h-[1.2rem] min-w-[1.2rem] place-items-center rounded-full bg-danger px-1 text-[10px] font-bold leading-none text-white"></span>
+          </a>
+
+          <button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle colour theme" title="Toggle light / dark mode">
+            <span class="lf-theme-icon-sun"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span>
+            <span class="lf-theme-icon-moon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+          </button>
+
+          <button type="button" class="icon-btn" data-rtl-toggle aria-label="Toggle text direction (LTR / RTL)" title="Toggle left-to-right / right-to-left layout">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
+          </button>
+
+          <div class="relative min-w-0 flex-1" data-dropdown>
+            <button type="button" class="flex w-full items-center gap-2 rounded-xl p-1.5 transition hover:bg-softindigo" data-dropdown-trigger aria-expanded="false" aria-controls="user-menu" aria-haspopup="true" aria-label="Account menu">
+              <span id="user-avatar" class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-secondary text-xs font-bold text-white">DA</span>
+              <span class="side-label min-w-0 flex-1 text-start leading-tight">
+                <span id="user-name" class="block truncate text-sm font-semibold text-ink">Demo Admin</span>
+                <span id="user-role" class="block text-[10px] font-bold uppercase tracking-wider text-muted">Admin</span>
+              </span>
+              <span class="side-label text-muted">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </button>
+            <div id="user-menu" class="lf-menu absolute end-0 bottom-full z-50 mb-2 w-52 rounded-2xl border border-line bg-surface p-2 shadow-card" role="menu" aria-label="Account">
+              <a href="#/settings" role="menuitem" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-ink transition hover:bg-softindigo hover:text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Profile
+              </a>
+              <a href="#/settings" role="menuitem" class="mt-1 flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-ink transition hover:bg-softindigo hover:text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                Settings
+              </a>
+              <div class="my-1 border-t border-line"></div>
+              <button type="button" id="user-logout" role="menuitem" class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-danger transition hover:bg-danger/10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+                Log out
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Drawer backdrop (mobile / tablet) -->
+    <div id="dash-backdrop" class="pointer-events-none fixed inset-0 z-40 bg-ink/60 opacity-0 transition-opacity duration-300 lg:hidden" aria-hidden="true"></div>
+
+    <!-- --------------------- TOPBAR + MAIN COLUMN ---------------------- -->
+    <div class="flex min-h-screen w-full min-w-0 flex-col">
+      <header class="sticky top-0 z-30 border-b border-line bg-surface/90 backdrop-blur-lg">
+        <div class="flex h-16 items-center gap-2 px-4 sm:gap-3 sm:px-6 lg:px-8">
+          <div class="min-w-0 flex-1">
+            <h1 id="dash-title" class="truncate font-display text-lg font-bold tracking-tight text-ink sm:text-xl">Overview</h1>
+            <p id="dash-subtitle" class="hidden truncate text-xs font-medium text-muted sm:block">Platform performance at a glance</p>
+          </div>
+
+          <button type="button" id="dash-menu" class="icon-btn shrink-0 lg:hidden" aria-label="Open menu" aria-controls="dash-sidebar" aria-expanded="false" aria-haspopup="dialog">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Route content is rendered here by js/admin-dashboard.js -->
+      <main id="dash-content" class="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-8" tabindex="-1"></main>
+    </div>
+  </div>
+
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/footer.js"></script>
+  <script src="../js/admin-dashboard.js"></script>
+</body>
+</html>

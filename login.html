@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — LaunchForge Accelerator</title>
+  <meta name="description" content="Sign in to the LaunchForge Accelerator demo portal — founders reach the founder dashboard, admins reach the admin dashboard. Includes clearly labelled demo credentials." />
+  <link rel="icon" href="images/logo/favicon.svg" type="image/svg+xml" />
+  <script src="js/main.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ---- Login page shell: login card only, full viewport, no page scroll ----
+       Left image card is hidden below lg (mobile + small tablets) */
+    .login-split {
+      height: 100vh;
+      overflow: hidden;
+    }
+    .login-form-col {
+      overflow-y: auto;
+    }
+    /* Phones & short landscape: scroll the page as ONE piece and anchor the
+       toggles to the page's top-right corner (absolute, scrolls with the page)
+       so card content can never slide underneath them */
+    @media (max-width: 767px), (max-height: 500px) {
+      .login-split {
+        height: auto;
+        overflow: visible;
+      }
+      .login-form-col {
+        overflow: visible;
+        padding-top: 6.5rem;
+      }
+      body .login-toggles {
+        position: absolute;
+      }
+    }
+
+    /* Center the card content vertically, but never clip it above the top edge
+       when it is taller than the viewport (falls back to plain center older browsers) */
+    .login-form-col {
+      align-items: center;
+      align-items: safe center;
+    }
+    /* Compact form rhythm so logo + heading + form + footer all fit a laptop screen */
+    .login-form-col .field {
+      margin-bottom: 1rem;
+    }
+    .login-form-col form .my-6 {
+      margin-block: 1.1rem;
+    }
+    /* Short laptop viewports: squeeze a little more out of the layout */
+    @media (min-width: 768px) and (max-height: 800px) {
+      .login-form-col {
+        padding-block: 1rem;
+      }
+      .login-form-col h1 {
+        margin-top: 0.75rem;
+        font-size: 1.75rem;
+      }
+      .login-form-col .card {
+        margin-top: 0.9rem;
+        padding: 1rem;
+      }
+      .login-form-col .field-hint {
+        font-size: 0.7rem;
+      }
+    }
+
+    /* ---- Toggle buttons pinned to the top-right corner of the page ---- */
+    .login-toggles {
+      position: fixed;
+      top: 1rem;
+      inset-inline-end: 1rem;
+      z-index: 60;
+    }
+    @media (min-width: 768px) {
+      .login-toggles {
+        top: 1.25rem;
+        inset-inline-end: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toggle buttons — top-right corner of the page (no navbar on this page) -->
+  <div class="login-toggles card flex items-center gap-1 p-1.5" role="group" aria-label="Display controls">
+    <button type="button" class="icon-btn" data-theme-toggle aria-label="Toggle colour theme" title="Toggle light / dark mode">
+      <span class="lf-theme-icon-sun"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span>
+      <span class="lf-theme-icon-moon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
+    </button>
+    <button type="button" class="icon-btn" data-rtl-toggle aria-label="Toggle text direction (LTR / RTL)" title="Toggle left-to-right / right-to-left layout">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>
+    </button>
+  </div>
+
+  <main id="main-content">
+    <section class="bg-page">
+      <div class="grid login-split lg:grid-cols-2">
+
+        <!-- ==================== LEFT — BRAND / IMAGE (hidden on mobile & small tablets) ==================== -->
+        <div class="relative hidden overflow-hidden lg:block lg:h-auto">
+          <img
+            src="images/hero/login-side.jpg"
+            alt="Founder working late on a laptop in a warm, focused workspace"
+            width="1600"
+            height="1067"
+            class="absolute inset-0 h-full w-full object-cover"
+            fetchpriority="high"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/45"></div>
+
+          <div class="relative flex h-full flex-col justify-center gap-8 p-6 sm:p-10 lg:p-12">
+            <div class="hidden sm:block">
+              <p class="max-w-md font-display text-2xl font-bold leading-tight text-white sm:text-3xl">
+                From Bold Ideas to Breakthrough Businesses.
+              </p>
+              <figure class="mt-6 border-s-2 border-secondary ps-4">
+                <blockquote class="text-sm leading-relaxed text-white/80">
+                  &ldquo;The best time to build something that matters is before you feel ready —
+                  that is exactly what an accelerator is for.&rdquo;
+                </blockquote>
+                <figcaption class="mt-2 text-xs font-bold uppercase tracking-wider text-white/60">
+                  Sample founder quote · demo content
+                </figcaption>
+              </figure>
+            </div>
+
+            <p class="text-[11px] font-semibold uppercase tracking-wider text-white/50">
+              Frontend demonstration · no real accounts
+            </p>
+          </div>
+        </div>
+
+        <!-- ==================== RIGHT — LOGIN CARD ==================== -->
+        <div class="login-form-col flex items-center justify-center px-4 py-8 sm:px-8 lg:px-12">
+          <div class="w-full max-w-md">
+
+            <a href="index.html" class="mx-auto flex w-fit items-center justify-center gap-3 text-center align-middle transition hover:opacity-75" aria-label="LaunchForge Accelerator — go to home page" title="LaunchForge Accelerator — home">
+              <img src="images/logo/launchforge-mark.svg" alt="" width="40" height="40" class="h-10 w-10 shrink-0" />
+              <span class="block text-start leading-tight">
+                <span class="block font-display text-lg font-bold tracking-tight text-ink">LaunchForge</span>
+                <span class="block text-[10px] font-bold uppercase tracking-[0.18em] text-muted">Startup Accelerator</span>
+              </span>
+            </a>
+
+            <h1 class="mt-6 text-center font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">Welcome Back</h1>
+            <p class="mx-auto mt-3 max-w-sm text-center text-sm leading-relaxed text-muted sm:text-base">
+              Sign in to pick up where you left off — mentors, milestones and application status
+              all live behind this door.
+            </p>
+
+            <form id="login-form" class="card mt-6 p-5 sm:p-6" novalidate>
+              <!-- email -->
+              <div class="field">
+                <label class="label" for="login-email">Email Address <span class="text-danger" aria-hidden="true">*</span></label>
+                <input class="input" type="email" id="login-email" name="email" dir="ltr" autocomplete="email" placeholder="you@example.com" required aria-describedby="login-email-hint" />
+                <p class="field-hint" id="login-email-hint">Use one of the demo accounts below to explore the dashboards.</p>
+                <p class="field-error hidden" data-error-for="email" role="alert"></p>
+              </div>
+
+              <!-- password -->
+              <div class="field">
+                <div class="mb-1.5 flex items-center justify-between gap-3">
+                  <label class="label mb-0" for="login-password">Password <span class="text-danger" aria-hidden="true">*</span></label>
+                  <button
+                    type="button"
+                    id="login-password-toggle"
+                    data-password-toggle
+                    class="-my-1 rounded-lg p-1.5 text-muted transition hover:text-primary"
+                    aria-label="Show password"
+                    aria-pressed="false"
+                    aria-controls="login-password"
+                    title="Show / hide password">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </button>
+                </div>
+                <input class="input" type="password" id="login-password" name="password" dir="ltr" autocomplete="current-password" placeholder="••••••••" required aria-describedby="login-password-hint" />
+                <p class="field-hint" id="login-password-hint">Passwords are checked in the browser only (demo).</p>
+                <p class="field-error hidden" data-error-for="password" role="alert"></p>
+              </div>
+
+              <!-- remember + forgot -->
+              <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+                <label class="flex cursor-pointer items-center gap-2.5 text-sm font-medium text-muted">
+                  <input type="checkbox" name="remember" id="remember" class="h-4 w-4 rounded border-line accent-primary focus:ring-primary/40" />
+                  Remember me
+                </label>
+                <a href="#" class="text-sm font-semibold text-primary hover:underline" data-demo-note="Password recovery is not available in this frontend demo.">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg btn-block">
+                <span data-submit-label>Log in</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lf-flip" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="m10 17 5-5-5-5"/><path d="M15 12H3"/></svg>
+              </button>
+
+              <!-- divider -->
+              <div class="my-6 flex items-center gap-4" aria-hidden="true">
+                <span class="h-px flex-1 bg-line"></span>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-muted">New to LaunchForge</span>
+                <span class="h-px flex-1 bg-line"></span>
+              </div>
+
+              <p class="text-center text-sm leading-relaxed text-muted">
+                New here?
+                <a href="apply.html" class="font-semibold text-primary hover:underline">Apply to LaunchForge</a>
+              </p>
+            </form>
+
+       
+
+            <p class="mt-5 text-center text-xs leading-relaxed text-muted">
+              Want in without an account?
+              <a href="apply.html" class="font-semibold text-primary hover:underline">Submit an application</a>
+              — or
+              <a href="index.html" class="font-semibold text-primary hover:underline">head back home</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <script src="js/footer.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
